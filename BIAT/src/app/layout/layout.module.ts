@@ -7,8 +7,10 @@ import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
-import { MatIconModule } from '@angular/material';
+import { MatIconModule, MatSidenavModule, MatToolbarModule } from '@angular/material';
 import { ButtonModule } from 'primeng/button';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
     imports: [
@@ -17,7 +19,10 @@ import { ButtonModule } from 'primeng/button';
         TranslateModule,
         NgbDropdownModule.forRoot(),
         MatIconModule,
-        ButtonModule
+        ButtonModule,
+        FormsModule,
+        MatSidenavModule,
+        MatToolbarModule
     ],
     exports: [MatIconModule],
     declarations: [LayoutComponent, SidebarComponent, HeaderComponent]

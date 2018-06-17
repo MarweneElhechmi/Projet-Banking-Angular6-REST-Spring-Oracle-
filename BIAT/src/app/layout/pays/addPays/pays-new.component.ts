@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Pays } from '../../../../model/model.pays';
 import { Http } from '@angular/http';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule } from '@angular/common/http';
 import { routerTransition } from '../../../router.animations';
 import { PaysService } from '../../../../services/pays.service';
 

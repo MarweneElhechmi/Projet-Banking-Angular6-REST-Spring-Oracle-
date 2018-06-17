@@ -10,12 +10,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 import { PaysService } from '../services/pays.service';
-import { ProduitsService } from '../services/produits.service';
 import { AuthService } from '../services/auth.service';
 import { AccountService } from '../services/account.service';
 import { UrlPermission } from './urlPermission/url.permission';
 import { ButtonModule } from 'primeng/button';
-import { MatIconModule, MatCardModule } from '@angular/material';
+import { MatIconModule, MatCardModule, MatSidenavModule,
+    MatToolbarModule } from '@angular/material';
+import { FormsModule } from '@angular/forms';
+import { ProduitsService } from '../services/produits.service';
 
 // AoT requires an exported function for factories
 export const createTranslateLoader = (http: HttpClient) => {
@@ -38,6 +40,9 @@ export const createTranslateLoader = (http: HttpClient) => {
         HttpClientModule,
         MatIconModule,
         MatCardModule,
+        FormsModule,
+        MatSidenavModule,
+        MatToolbarModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,

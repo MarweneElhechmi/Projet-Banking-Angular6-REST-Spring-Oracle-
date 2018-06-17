@@ -20,7 +20,9 @@ const routes: Routes = [
             { path: 'lst-produit', loadChildren: './produit/lstProduit/produits-mc.module#ProduitsMcModule' },
             { path: 'produits-new', loadChildren: './produit/addProduit/produits-new.module#ProduitsNewModule' },
             { path: 'produits-new/:reference', loadChildren: './produit/addProduit/produits-new.module#ProduitsNewModule' },
-            { path: 'blank-page/:reference', loadChildren: './blank-page/blank-page.module#BlankPageModule' }
+            { path: 'blank-page/:reference', loadChildren: './blank-page/blank-page.module#BlankPageModule'
+            , runGuardsAndResolvers: 'always' },
+            { path: 'wizard', loadChildren: './wizard/wizard.module#WizardModule' }
         ]
     }
 ];

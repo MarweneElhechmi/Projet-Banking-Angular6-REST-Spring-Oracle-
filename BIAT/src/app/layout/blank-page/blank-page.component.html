@@ -9,7 +9,9 @@
             <!--   TAB 1  -->
             <mat-tab label="Tab 1">
 
- <div class="panel-body">
+
+
+ <div class="panel-body" id="tab1">
 
       <div>
 
@@ -39,7 +41,10 @@
     </div>
 
 </div>
-
+        <script>
+        var tab = $('#tab1').tabs('getSelected');
+        tab.panel('refresh');
+        </script>
 
 
 
@@ -68,8 +73,9 @@
                         </tr>
                     </ng-template>
                 </p-table>
+
                 <!--
-                <table class="table table-striped" id="table">
+                    <table class="table table-striped" id="table">
                     <tr>
 
                       <th>CODE PAYS</th><th>NOM PAYS</th><th>LIBELLE</th><th></th><th></th>
@@ -77,6 +83,7 @@
                     </tr>
 
                     <tr *ngFor="let pay of pays">
+
                       <td>{{pay.codePays}}</td>
                       <td>{{pay.paysName}}</td>
                       <td>{{pay.libelle}}</td>
@@ -85,8 +92,8 @@
 
                     </table>
 
-
 -->
+
 
             </mat-tab>
              <!--   FIN TAB 2 -->

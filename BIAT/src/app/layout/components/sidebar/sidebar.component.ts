@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { User } from '../../../../model/model.user';
@@ -66,4 +66,12 @@ export class SidebarComponent {
     onLoggedout() {
         localStorage.removeItem('isLoggedin');
     }
+
+    @HostBinding('class.is-open')
+    isOpen = false;
+
+    toggle() {
+      this.isOpen = !this.isOpen;
+    }
+
 }

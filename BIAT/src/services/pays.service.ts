@@ -34,11 +34,7 @@ getPays(): Observable<Pays[]>{
 
 getPaysByRef(reference:number): Observable<Pays[]>
 {
-        return this.http.get<Pays[]>("http://localhost:8080/paysByReference/"+reference).pipe(
-            map(response=>response),
-            tap(pays => this.log(`fetched pays`)),
-            catchError(this.handleError('pays', []))
-          );
+        return this.http.get<Pays[]>("http://localhost:8080/paysByReference/"+reference);
       }
 
 

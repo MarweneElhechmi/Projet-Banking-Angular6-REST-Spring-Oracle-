@@ -3,6 +3,11 @@
             <img class="logo-img" src="assets/images/logo_Biat.png" width="160px" alt="BIAT">
 </a>
     <a class="navbar-brand" href="#"> </a>
+    <div>
+        <button md-button ng-click="toggleLeft()" class="md-raised">
+          Toggle Sidenav
+        </button>
+      </div>
     <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
         <!-- <span class="navbar-toggler-icon"></span> -->
         <i class="fa fa-bars text-muted" aria-hidden="true"></i>
@@ -14,9 +19,13 @@
                 <div class="ui-g ui-fluid">
                     <div class="ui-g-12 ui-md-4">
                         <div class="ui-inputgroup">
-                        <button pButton label="Recherche" (click)="onEditProduit_Ref(reference.value);reference.value='' "  type="button" ></button>
-                        <input  type="text" #reference placeholder="{{ 'Search' | translate }}">
+                        <!--<button pButton label="Recherche" [class.selected]="reference === selectedId" (click)="onEditProduit_Ref(reference.value);reference.value='' "  type="button" ></button>-->
+                        <button pButton label="Recherche" routerLink="/blank-page/:reference" (click)="onEditProduit_Ref(reference.value);reference.value='' "  type="button" ></button>
+                        <input  type="text" [(ngModel)]="referenceInput" #reference="ngModel"  placeholder="{{ 'Search' | translate }}">
+                            <!-- Hedhi Sibling to sibling bi DataSharingService -->
 
+                            <!-- <input  type="text" [(ngModel)]="referenceInput" #reference="ngModel"  placeholder="{{ 'Search' | translate }}">
+ -->
                     </div>
                 </div>
                 </div>&nbsp;
