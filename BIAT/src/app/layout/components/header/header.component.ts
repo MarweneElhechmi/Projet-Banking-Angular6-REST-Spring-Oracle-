@@ -37,6 +37,8 @@ export class HeaderComponent implements OnInit {
     paysNew:Pays;
     selectedId: number;
     produit$: Observable<Produit>
+    errorMessage:string;
+
 
     constructor(public authService: AuthService,
         public produitsService:ProduitsService,public paysService:PaysService,
@@ -87,6 +89,7 @@ export class HeaderComponent implements OnInit {
       // this.serviceSharing.newProd(this.produit);
       // this.serviceSharing.newPays(this.paysNew);
              console.log("Ref2 :"+JSON.stringify(this.reference));
+
 
         }
 

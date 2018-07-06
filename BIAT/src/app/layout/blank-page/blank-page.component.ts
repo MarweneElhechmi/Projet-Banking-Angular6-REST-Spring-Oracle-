@@ -28,6 +28,8 @@ export class BlankPageComponent implements OnInit  {
     @Input() reference:number;
     cols: any[];
     referenceInput:number=0;
+    errorMessage:string;
+    product:String;
 
     constructor(public paysService:PaysService,public produitsService:ProduitsService,public router:Router,
         public activatedRoute:ActivatedRoute,private serviceSharing : DataSharingService) {
@@ -82,10 +84,15 @@ export class BlankPageComponent implements OnInit  {
     .subscribe(data=>{
       this.pageProduits = data;
       this.produit=data;
-      console.log(this.pageProduits)
+      console.log(this.pageProduits);
       this.serviceSharing.newProd(this.produit);
       this.serviceSharing.currentProduit.subscribe(produit=>this.produit=produit);
+      console.log("JSON System :"+JSON.stringify(this.produit));
+      this.product=JSON.stringify(this.produit);
 
+      if(this.product === "null"){
+      alert("Error : Numéro de téléphone Introuvable ");
+      }
     },err=>{
       console.log(err);
     })
@@ -104,8 +111,7 @@ export class BlankPageComponent implements OnInit  {
       this.pays=[this.pagePays];
       this.paysNew=this.pagePays;
       this.serviceSharing.newPays(this.pays);
-      this.serviceSharing.currentPays.subscribe(pays=>this.pays=pays);
-
+     this.serviceSharing.currentPays.subscribe(pays=>this.pays=pays);
       //OU BIEN
       //this.pays=[this.pageProduits.pays]
       console.log("pays"+this.pays);
@@ -113,7 +119,15 @@ export class BlankPageComponent implements OnInit  {
 
     },err=>{
       console.log(err);
+
     })
+
+    //** ************************************************************************************** */
+    console.log("reference blank : "+ reference);
+    console.log("produit blank : "+JSON.stringify(this.produit));
+    console.log("pays blank : "+this.pays);
+
+    //** ************************************************************************************** */
 
     // });
 }

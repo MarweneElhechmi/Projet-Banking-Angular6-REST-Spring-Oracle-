@@ -19,6 +19,7 @@ const routes: Routes = [
     imports: [RouterModule.forRoot(routes , {
         onSameUrlNavigation: 'reload',
         enableTracing: false
+        //useHash:true
       }  )],
     exports: [RouterModule]
 })

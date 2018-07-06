@@ -4,7 +4,7 @@
 
   <div class="panel panel-primary">
 
-  <div class="panel-heading"> Liste des Produits Par Mot Clé </div>
+  <div class="panel-heading"> Liste des Pays Par Mot Clé </div>
 
   <div class="panel-body">
 
@@ -45,7 +45,7 @@
 
   <div class="row">
       <ul class="nav nav-pills">
-        <li [ngClass]="{'active':currentPage==(i)}" *ngFor="let p of pagination; let i=index" class="clickable">
+        <li [ngClass]="{'active':currentPage==(i)}" *ngFor="let p of pagination; let i=index" class="nav-link">
          <a (click)="gotoPage(i)">{{i}}</a>
         </li>
       </ul>

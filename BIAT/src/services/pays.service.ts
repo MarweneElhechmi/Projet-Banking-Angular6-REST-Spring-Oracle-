@@ -15,8 +15,9 @@ const httpOptions = {
 @Injectable()
 export class PaysService{
 
-    constructor(public http:HttpClient,private messageService: MessageService) { }
 
+
+    constructor(public http:HttpClient,private messageService: MessageService) { }
 
 
 addPays(pays:Pays):Observable<Pays>{

@@ -4,6 +4,13 @@
     <head>
         <meta charset="utf-8">
         <title>BIAT </title>
+
+    <!-- Lors du déploiement sur PC ( Génération du dist ), on enléve <base href="/"> et on met le <script> -->
+    <!-- et on va dans le app-root lekbir on met
+        imports: [RouterModule.forRoot( routes , {useHash:true} )] -->
+
+        <!--<script>document.write('<base href="' + document.location + '" />');</script>-->
+
         <base href="/">
 
         <meta name="viewport" content="width=device-width, initial-scale=1">

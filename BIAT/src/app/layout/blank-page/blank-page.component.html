@@ -2,20 +2,27 @@
 
     <div class="container spacer">
 
+
         <mat-card>
             <mat-card-content>
         <mat-tab-group class="demo-tab-group">
 
+            <div class="alert alert-danger" role="alert" *ngIf="errorMessage">{{errorMessage}}</div>
+
             <!--   TAB 1  -->
-            <mat-tab label="Tab 1">
+            <mat-tab label="Société">
+                <div class="alert alert-danger" role="alert" *ngIf="errorMessage">{{errorMessage}}</div>
 
-
+                <p class="texte"> Sté Solar Power Company (SOPOC) </p>
+                <h5 style="text-align:center">ID_T24 :<b class="texte"> {{produit.reference}} </b></h5>
 
  <div class="panel-body" id="tab1">
 
       <div>
+<!-- ajouter style="width:700px" dans les inputs pour les tas8irhom -->
+<!-- ajouter class="input_Style" dans chaque div pour center et tas8ir -->
 
-        <div class="form-group">
+        <div class="form-group" >
 
             <label class="control-label">Designation</label>
             <input class="form-control" type="text" [(ngModel)]="produit.designation" />
@@ -25,7 +32,7 @@
                 <div class="form-group">
 
                     <label class="control-label">Prix</label>
-                    <input class="form-control" type="text" [(ngModel)]="produit.prix" />
+                    <input class="form-control" type="text" [(ngModel)]="produit.prix"/>
 
                         </div>
 
@@ -35,6 +42,23 @@
                             <input class="form-control" type="date" [ngModel]="produit.date|date:'yyyy-MM-dd' " />
 
                                 </div>
+
+                                <p-table [columns]="cols" [value]="pays" [paginator]="true" [rows]="10">
+                                    <ng-template pTemplate="header" let-columns>
+                                        <tr>
+                                            <th *ngFor="let col of columns">
+                                                {{col.header}}
+                                            </th>
+                                        </tr>
+                                    </ng-template>
+                                    <ng-template pTemplate="body" let-rowData let-columns="columns">
+                                        <tr>
+                                            <td *ngFor="let col of columns">
+                                                {{rowData[col.field]}}
+                                            </td>
+                                        </tr>
+                                    </ng-template>
+                                </p-table>
 
                                     <br/>
 
@@ -55,7 +79,7 @@
 
 
             <!--   TAB 2  -->
-            <mat-tab label="Tab 2">
+            <mat-tab label="Informations Générales">
 
                 <p-table [columns]="cols" [value]="pays" [paginator]="true" [rows]="10">
                     <ng-template pTemplate="header" let-columns>
@@ -101,7 +125,7 @@
 
 
             <!--   TAB 1  -->
-            <mat-tab label="Tab 3">Content 3
+            <mat-tab label="Activité et Chiffre">Content 3
 
 
             </mat-tab>

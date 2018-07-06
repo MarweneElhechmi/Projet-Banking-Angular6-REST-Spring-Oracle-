@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule,Router } from '@angular/router';
-import { Produit } from '../../../../model/model.produit';
-import { ProduitsService } from '../../../../services/produits.service';
+import { Router } from '@angular/router';
 import { PaysService } from '../../../../services/pays.service';
 import { Pays } from '../../../../model/model.pays';
-import { Observable } from 'rxjs';
 import { routerTransition } from '../../../router.animations';
 import { ActivatedRoute } from '@angular/router';
 
@@ -27,7 +23,6 @@ export class LstProduitMcComponent implements OnInit {
   pays:Pays[];
   valeur:string="";
   loading: boolean;
-
 
   displayDialog: boolean;
 
@@ -64,8 +59,17 @@ doSearch_Ref(){
     this.paysService.getPaysParMc(this.motCle,this.currentPage)
     .subscribe(data=>{
       this.router.navigate(["/lst-pays"]);
+
       this.pagePays = data;
-      this.pagination=new Array(data.length)
+      this.page=data;
+      this.pays=[this.page];
+      console.log(data);
+      console.log(this.pagePays)
+      console.log(this.pays.length);
+      //this.pagination=new Array(this.pays.length);
+
+      this.pagination=new Array(data['totalPages']);
+      console.log(this.pagination);
     },err=>{
       console.log(err);
     })

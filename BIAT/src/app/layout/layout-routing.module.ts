@@ -17,6 +17,7 @@ const routes: Routes = [
             { path: 'components', loadChildren: './bs-component/bs-component.module#BsComponentModule' },
             { path: 'pays', loadChildren: './pays/addPays/pays-new.module#PaysNewModule' },
             { path: 'lst-pays/:reference', loadChildren: './pays/lstPays/lst-produit-mc.module#LstProduitMcModule' },
+            { path: 'lst-pays', loadChildren: './pays/lstPays/lst-produit-mc.module#LstProduitMcModule' },
             { path: 'lst-produit', loadChildren: './produit/lstProduit/produits-mc.module#ProduitsMcModule' },
             { path: 'produits-new', loadChildren: './produit/addProduit/produits-new.module#ProduitsNewModule' },
             { path: 'produits-new/:reference', loadChildren: './produit/addProduit/produits-new.module#ProduitsNewModule' },
