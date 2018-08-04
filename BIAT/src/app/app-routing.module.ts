@@ -18,8 +18,8 @@ const routes: Routes = [
 @NgModule({
     imports: [RouterModule.forRoot(routes , {
         onSameUrlNavigation: 'reload',
-        enableTracing: false
-        //useHash:true
+        enableTracing: false,
+        useHash:true
       }  )],
     exports: [RouterModule]
 })

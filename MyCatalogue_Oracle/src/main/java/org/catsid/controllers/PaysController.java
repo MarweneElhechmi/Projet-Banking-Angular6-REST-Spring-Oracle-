@@ -39,7 +39,7 @@ return paysRepository.findAll();
 	@RequestMapping(value="/paysParMotCle")
 	public Page<Pays> getPaysParMotCle(@RequestParam(name="motCle",defaultValue="")String motCle,
 			@RequestParam(name="page",defaultValue="0")int page) {
-		return paysRepository.PaysParMotCle("%"+motCle+"%",new PageRequest(page, 5));
+		return paysRepository.PaysParMotCle("%"+motCle+"%",new PageRequest(page,5));
 		
 	}
 	
@@ -51,7 +51,15 @@ return paysRepository.findAll();
 	
 	@RequestMapping(value="/paysByReference/{reference}",method=RequestMethod.GET)
 	public Pays getProduitByRef(@PathVariable Long reference) {
-		return paysRepository.PaysParId(reference);
-		
+		Pays pays = new Pays();
+		pays= paysRepository.PaysParId(reference);
+		return pays;
 	}
+	
+	@RequestMapping(value="/updatePays")
+	public Pays updateProduitByReference(@RequestBody Pays paysUpdate) {
+		paysRepository.saveAndFlush(paysUpdate);
+		return paysUpdate;
+	}
+	
 }

@@ -16,8 +16,7 @@ export class AuthService {
     // creating base64 encoded String from user name and password
     var base64Credential: string = btoa( user.username+ ':' + user.password);
     headers.append("Authorization", "Basic " + base64Credential);
-
-
+     console.log(base64Credential)
 
     let options = new HttpParams();
     //options.headers=headers;
@@ -27,6 +26,7 @@ export class AuthService {
       };
 
       requestOptions.params.append("Authorization", "Basic " + base64Credential);
+
 
     return this.http.get("http://localhost:8080/account/login?username="+user.username+"&password="+user.password , requestOptions)
       .pipe(map((response: Response) => {

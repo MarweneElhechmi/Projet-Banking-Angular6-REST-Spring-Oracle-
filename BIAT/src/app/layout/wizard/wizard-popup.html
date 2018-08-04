@@ -23,7 +23,7 @@
                             <select class="form-control" [(ngModel)]="data.paysPop" >
                             <option value="">-- Select Pays --</option>
 
-                            <option *ngFor="let p of paysModal" [ngValue]="p">
+                            <option *ngFor="let p of paysModal" [(ngValue)]="p.paysName" [ngValue]="p" >
                                 {{p.paysName}} -- {{p.libelle}}
                             </option>
                         </select>

@@ -43,7 +43,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 	    return new WebMvcConfigurerAdapter() {
 	        @Override
 	        public void addCorsMappings(CorsRegistry registry) {
-	            registry.addMapping("/**").allowedOrigins("http://localhost:4200");
+	            registry.addMapping("/**").allowedOrigins("*");
 	          
 	        }
 	    };
@@ -66,7 +66,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 		// ignoring the guest's urls "
 		.antMatchers("/account/register","/account/login","/logout","/produitsParMotCle",
 				"/getProduit/{reference}","/paysParMotCle","/pays","/affichePays",
-				"/produitsByReference/{reference}","/paysByReference/{reference}").permitAll()
+				"/produitsByReference/{reference}","/updatePays","/paysByReference/{reference}","/register","/save").permitAll()
 		// authenticate all remaining URLS
 		.anyRequest().fullyAuthenticated().and()
       /* "/logout" will log the user out by invalidating the HTTP Session,

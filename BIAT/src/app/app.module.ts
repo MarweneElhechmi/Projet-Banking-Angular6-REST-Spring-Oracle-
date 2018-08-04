@@ -14,8 +14,9 @@ import { AuthService } from '../services/auth.service';
 import { AccountService } from '../services/account.service';
 import { UrlPermission } from './urlPermission/url.permission';
 import { ButtonModule } from 'primeng/button';
-import { MatIconModule, MatCardModule, MatSidenavModule,
+import { MatCardModule, MatSidenavModule,
     MatToolbarModule } from '@angular/material';
+    import {MatIconModule} from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { ProduitsService } from '../services/produits.service';
 

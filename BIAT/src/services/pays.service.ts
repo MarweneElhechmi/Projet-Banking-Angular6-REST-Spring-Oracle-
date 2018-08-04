@@ -27,6 +27,13 @@ addPays(pays:Pays):Observable<Pays>{
          ,pays);
 }
 
+updatePays(pays:Pays):Observable<Pays>{
+
+    return this.http.post<Pays>("http://localhost:8080/updatePays"
+    ,pays);
+}
+
+
 getPays(): Observable<Pays[]>{
 
      return this.http.get<Pays[]>("http://localhost:8080/affichePays");

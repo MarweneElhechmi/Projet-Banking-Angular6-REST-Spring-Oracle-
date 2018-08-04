@@ -5,7 +5,7 @@ import { Produit } from '../../../model/model.produit';
 import { Router,ActivatedRoute } from '@angular/router';
 import { PaysService } from '../../../services/pays.service';
 import { Pays } from '../../../model/model.pays';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { DataSharingService } from '../../../services/data-sharing.service';
 
@@ -123,14 +123,24 @@ export class BlankPageComponent implements OnInit  {
     })
 
     //** ************************************************************************************** */
-    console.log("reference blank : "+ reference);
-    console.log("produit blank : "+JSON.stringify(this.produit));
-    console.log("pays blank : "+this.pays);
+    console.log("reference Hors subscribe : "+ reference);
+    this.serviceSharing.newId(reference);
+    console.log("produit hsb : "+JSON.stringify(this.produit));
+    console.log("pays shbc  : "+this.pays);
 
     //** ************************************************************************************** */
 
     // });
 }
+
+private t24() {
+        this.serviceSharing.currentReference.subscribe(reference=>this.reference=reference)
+            console.log("Ref REEEEF :"+JSON.stringify(this.reference));
+        let bSubject = new BehaviorSubject(this.reference);
+        console.log("reference fi fonction o5ra"+this.serviceSharing.newId);
+        console.log("ref fi o5ra"+JSON.stringify(this.serviceSharing.currentReference));
+
+    }
 
        /* onEditProduit_Ref(reference:number){
             this.router.navigate(['/blank-page',reference]);
@@ -138,6 +148,65 @@ export class BlankPageComponent implements OnInit  {
            // window.location.reload(true);
           }*/
 
+          /*********************************************** */
 
+          displayDialog: boolean;
+
+          car: Pays = {"codePays":0,"libelle":"","paysName":""};
+
+          selectedCar: Pays;
+
+          newCar: boolean;
+
+          cars: Pays[];
+
+
+          showDialogToAdd() {
+              this.newCar = true;
+              this.car = {"codePays":0,"libelle":"","paysName":""};
+              this.displayDialog = true;
+          }
+
+          save() {
+              let cars = [...this.pays];
+              if (this.newCar){
+                  cars.push(this.car);
+              }
+              else{
+                  cars[this.pays.indexOf(this.selectedCar)] = this.car;
+                this.paysService.updatePays(this.car).subscribe(data=>{
+                    console.log(data);
+                  },err=>{
+                    console.log(err);
+                  });
+                }
+
+              this.pays = cars;
+              this.car = null;
+              this.displayDialog = false;
+          }
+
+          delete() {
+              let index = this.pays.indexOf(this.selectedCar);
+              this.pays = this.pays.filter((val, i) => i != index);
+              this.car = null;
+              this.displayDialog = false;
+          }
+
+          onRowSelect(event) {
+              this.newCar = false;
+              this.car = this.cloneCar(event.data);
+              this.displayDialog = true;
+          }
+
+          cloneCar(c: Pays): Pays {
+              let car = {"codePays":0,"libelle":"","paysName":""};
+              for (let prop in c) {
+                  car[prop] = c[prop];
+              }
+              return car;
+          }
+
+          /************************************************ */
 
 }

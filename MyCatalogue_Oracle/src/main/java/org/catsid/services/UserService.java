@@ -17,11 +17,11 @@ public class UserService {
 	UserRepository userRepository;
 
 	public User save(User user) {
-		return userRepository.saveAndFlush(user);
+		return userRepository.save(user);
 	}
 
 	public User update(User user) {
-		return userRepository.save(user);
+		return userRepository.saveAndFlush(user);
 	}
 
 	public User find(String userName) {
